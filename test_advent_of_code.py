@@ -22,7 +22,7 @@ class TestAdventOfCode(unittest.TestCase):
 
     def test_all_days(self):
         # Iterate through all available solution files
-        passed_days = min(datetime.now(), datetime(2024, 12, 12)).day
+        passed_days = min(datetime.now(), datetime(2025, 12, 12)).day
         for file in [
             Path(f"day_{str(i).zfill(2)}.py") for i in range(1, passed_days + 1)
         ]:

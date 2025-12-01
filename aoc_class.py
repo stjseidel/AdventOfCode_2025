@@ -17,6 +17,9 @@ from shutil import copy2
 from timeit import default_timer as timer
 
 from bs4 import BeautifulSoup
+from dotenv import get_key
+import requests
+import numpy as np
 
 
 class AOC:
@@ -29,17 +32,20 @@ class AOC:
                 day = str(datetime.today().day).zfill(2)
         if "_" in day:
             day = day.split("_")[-1]
-        day = str(day).zfill(2)
-        print("Working on day: ", day)
+        self.year = "2025"
+    
+        self.riddle_count = 12 if self.year >= "2025" else 24
+            
+        self.day = str(day).zfill(2)
+        print("Working on day: ", self.day)
         self.template = Path("template.py")
         self.beginning_of_time = timer()
-        self.day = day
         self.start()
         self.input_folder = Path("input")
         self.input = self.input_folder / f"{self.day}.txt"
         self.input_simple = self.input_folder / f"{self.day}_simple.txt"
         self.simple = simple
-        self.passed_days = min(datetime.now(), datetime(2024, 12, 25)).day
+        self.passed_days = min(datetime.now(), datetime(int(self.year), 12, self.riddle_count)).day
         if int(self.day) <= int(self.passed_days):
             self.create_txt_files()
             self.read_both_files()
@@ -134,7 +140,7 @@ class AOC:
 
     def get_soup(self, url):
         """Helper function to fetch the BeautifulSoup object for the day's page."""
-        # url = f"https://adventofcode.com/2024/day/{day}"
+        # url = f"https://adventofcode.com/{self.year}/day/{day}"
         session_cookie = get_key(".env", "SESSION_COOKIE")
         # Set up the headers with the session cookie
         HEADERS = {"Cookie": f"session={session_cookie}"}
@@ -143,12 +149,12 @@ class AOC:
         if response.status_code == 200:
             return BeautifulSoup(response.text, "html.parser")
         else:
-            print(f"Failed to fetch page for day {day}: {response.status_code}")
+            print(f"Failed to fetch page for day {self.day}: {response.status_code}")
             return None
 
     def fetch_input_simple(self, day: int):
         """Fetch and store the code from the <code> tag into 'day_simple.txt'."""
-        url = f"https://adventofcode.com/2024/day/{day}"
+        url = f"https://adventofcode.com/{self.year}/day/{day}"
         soup = self.get_soup(url)
         if soup:
             code_tag = soup.find("code")
@@ -164,7 +170,7 @@ class AOC:
 
     def fetch_input(self, day: int):
         """Fetch and store the input from the <pre> tag into 'day.txt'."""
-        url = f"https://adventofcode.com/2024/day/{day}/input"
+        url = f"https://adventofcode.com/{self.year}/day/{day}/input"
         soup = self.get_soup(url)
         if soup:
             file_path = self.input
@@ -179,6 +185,13 @@ class AOC:
         this_file = Path(f"day_{str(self.day).zfill(2)}.py")
         if not this_file.exists():
             copy2(self.template, this_file)
+
+    def copy_all_templates(self):
+        days = [str(i).zfill(2) for i in range(1, self.riddle_count + 1)]
+        for day in days:
+            this_file = Path(f"day_{str(day).zfill(2)}.py")
+            if not this_file.exists():
+                copy2(self.template, this_file)
 
     def lcm(self, denominators):
         # return least common denominator of a list of integers
@@ -289,11 +302,8 @@ class AOC:
 
 
 if __name__ == "__main__":
-    days = [str(i).zfill(2) for i in range(1, 25)]
-
-    for day in days:
-        today = AOC(day=day)
-        today.copy_template()
+    today = AOC(day='01')
+    today.copy_all_templates()
 
     # day = '02'
     # today = AOC(day=day)
