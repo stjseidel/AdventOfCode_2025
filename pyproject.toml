@@ -1,0 +1,25 @@
+[project]
+name = "adventofcode-2025"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beautifulsoup4>=4.14.3",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.11.0",
+    "mypy>=1.19.0",
+    "pytest>=9.0.1",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.7",
+]
+
+[tool.ruff]
+line-length = 88  # Match black
+select = ["E", "F", "I"]  # Error, pyflakes, isort
+ignore = [
+    "E501",  # Line too long (handled by black)
+]
