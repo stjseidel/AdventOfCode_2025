@@ -13,9 +13,8 @@ from aoc_class import AOC
 
 class Today(AOC):
 
-    def parse_lines(self, file_path=""):
+    def parse_lines(self):
         lines = self.lines
-        # lines = [[int(lin) for lin in line.split(' ') if set(lin) != set('') ] for line in lines]
         lines = lines[0].split(",")
         return lines
 
@@ -25,12 +24,10 @@ class Today(AOC):
         for line in lines:
             a, b = [int(x) for x in line.split("-")]
             self.check_range(a, b)
-                    
-
         self.result1 = sum(self.invalid)
         self.time1 = timer()
         return self.result1
-    
+
     def check_range(self, a, b):
         for i in range(a, b + 1):
             if len(str(i)) % 2 != 0:
@@ -41,35 +38,26 @@ class Today(AOC):
                 self.invalid.append(i)
                 # print(a, b, i, str(i)[:digits], str(i)[-digits:])
 
-
-
     def part2(self):
         lines = self.parse_lines()
         self.invalid = []
         for line in lines:
             a, b = [int(x) for x in line.split("-")]
-            self.check_range_any(a, b)
-                    
-
+            self.check_range_any(a, b)               
         self.result2 = sum(self.invalid)
         self.time2 = timer()
         return self.result2
-
 
     def check_range_any(self, a, b):
         for i in range(a, b + 1):
             found = False
             for d in range(1, len(str(i))//2 + 1):
                 if str(i)[:d] * (len(str(i)) // d) == str(i):
-                    
                     self.invalid.append(i)
-                    # print(a, b, i)
                     found = True
                     break
             if found:
                 continue
-
-
 
     def print_final(self):
         print(

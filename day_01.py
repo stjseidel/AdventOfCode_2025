@@ -13,9 +13,8 @@ from aoc_class import AOC
 
 class Today(AOC):
 
-    def parse_lines(self, file_path=""):
+    def parse_lines(self):
         lines = self.lines
-        # lines = [[int(lin) for lin in line.split(' ') if set(lin) != set('') ] for line in lines]
         lines = [(-1 if line[0] == 'L' else 1, int(line[1:])) for line in lines]
 
         return lines

@@ -16,10 +16,10 @@ from pathlib import Path
 from shutil import copy2
 from timeit import default_timer as timer
 
+import numpy as np
+import requests
 from bs4 import BeautifulSoup
 from dotenv import get_key
-import requests
-import numpy as np
 
 
 class AOC:
