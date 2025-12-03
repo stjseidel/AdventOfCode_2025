@@ -33,9 +33,9 @@ class AOC:
         if "_" in day:
             day = day.split("_")[-1]
         self.year = "2025"
-    
+
         self.riddle_count = 12 if self.year >= "2025" else 24
-            
+
         self.day = str(day).zfill(2)
         print("Working on day: ", self.day)
         self.template = Path("template.py")
@@ -45,7 +45,9 @@ class AOC:
         self.input = self.input_folder / f"{self.day}.txt"
         self.input_simple = self.input_folder / f"{self.day}_simple.txt"
         self.simple = simple
-        self.passed_days = min(datetime.now(), datetime(int(self.year), 12, self.riddle_count)).day
+        self.passed_days = min(
+            datetime.now(), datetime(int(self.year), 12, self.riddle_count)
+        ).day
         if int(self.day) <= int(self.passed_days):
             self.create_txt_files()
             self.read_both_files()
@@ -302,7 +304,7 @@ class AOC:
 
 
 if __name__ == "__main__":
-    today = AOC(day='01')
+    today = AOC(day="01")
     today.copy_all_templates()
 
     # day = '02'

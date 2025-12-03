@@ -43,7 +43,7 @@ class Today(AOC):
         self.invalid = []
         for line in lines:
             a, b = [int(x) for x in line.split("-")]
-            self.check_range_any(a, b)               
+            self.check_range_any(a, b)
         self.result2 = sum(self.invalid)
         self.time2 = timer()
         return self.result2
@@ -51,7 +51,7 @@ class Today(AOC):
     def check_range_any(self, a, b):
         for i in range(a, b + 1):
             found = False
-            for d in range(1, len(str(i))//2 + 1):
+            for d in range(1, len(str(i)) // 2 + 1):
                 if str(i)[:d] * (len(str(i)) // d) == str(i):
                     self.invalid.append(i)
                     found = True
@@ -78,27 +78,26 @@ if __name__ == "__main__":
     today.part1()
     print(f"Part 1 <SIMPLE> result is: {today.result1}")
 
-# =============================================================================
-# hard part 1
+    # =============================================================================
+    # hard part 1
     today.set_lines(simple=False)
     today.part1()
-    print(f'Part 1 <HARD> result is: {today.result1}')
+    print(f"Part 1 <HARD> result is: {today.result1}")
     today.stop()
-# =============================================================================
+    # =============================================================================
 
-
-# =============================================================================
-# simple part 2
+    # =============================================================================
+    # simple part 2
     today.set_lines(simple=True)
     today.part2()
-    print(f'Part 2 <SIMPLE> result is: {today.result2}')
-# =============================================================================
+    print(f"Part 2 <SIMPLE> result is: {today.result2}")
+    # =============================================================================
 
-# =============================================================================
-# hard part 2
+    # =============================================================================
+    # hard part 2
     today.set_lines(simple=False)
     today.part2()
-    print(f'Part 2 <HARD> result is: {today.result2}')
+    print(f"Part 2 <HARD> result is: {today.result2}")
     today.stop()
     today.print_final()
 # =============================================================================

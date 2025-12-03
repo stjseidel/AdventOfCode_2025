@@ -15,7 +15,7 @@ class Today(AOC):
 
     def parse_lines(self):
         lines = self.lines
-        lines = [(-1 if line[0] == 'L' else 1, int(line[1:])) for line in lines]
+        lines = [(-1 if line[0] == "L" else 1, int(line[1:])) for line in lines]
 
         return lines
 
@@ -78,27 +78,26 @@ if __name__ == "__main__":
     today.part1()
     print(f"Part 1 <SIMPLE> result is: {today.result1}")
 
-# =============================================================================
-# hard part 1
+    # =============================================================================
+    # hard part 1
     today.set_lines(simple=False)
     today.part1()
-    print(f'Part 1 <HARD> result is: {today.result1}')
+    print(f"Part 1 <HARD> result is: {today.result1}")
     today.stop()
-# =============================================================================
+    # =============================================================================
 
-
-# =============================================================================
-# simple part 2
+    # =============================================================================
+    # simple part 2
     today.set_lines(simple=True)
     today.part2()
-    print(f'Part 2 <SIMPLE> result is: {today.result2}')
-# =============================================================================
+    print(f"Part 2 <SIMPLE> result is: {today.result2}")
+    # =============================================================================
 
-# =============================================================================
-# hard part 2
+    # =============================================================================
+    # hard part 2
     today.set_lines(simple=False)
     today.part2()
-    print(f'Part 2 <HARD> result is: {today.result2}')
+    print(f"Part 2 <HARD> result is: {today.result2}")
     today.stop()
     today.print_final()
 # =============================================================================
