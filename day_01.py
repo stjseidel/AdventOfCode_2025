@@ -58,15 +58,7 @@ class Today(AOC):
         self.result2 = password
         self.time2 = timer()
         return self.result2
-
-    def print_final(self):
-        print(
-            f"Part 1 result is: {self.result1}. (time: {round(self.time1 - self.beginning_of_time, 2)})"
-        )
-        print(
-            f"Part 2 result is: {self.result2} (time: {round(self.time2 - self.time1, 2)})"
-        )
-
+    
 
 if __name__ == "__main__":
     # prep
