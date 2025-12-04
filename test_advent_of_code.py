@@ -59,7 +59,7 @@ class TestAdventOfCode(unittest.TestCase):
                     print(f"Day {day}, {part}: No expected result stored.")
         except Exception as e:
             self.fail(f"Error testing day {day}: {e}")
-
+    
 
 if __name__ == "__main__":
     unittest.main()
