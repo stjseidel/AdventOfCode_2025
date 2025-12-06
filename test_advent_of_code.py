@@ -42,7 +42,6 @@ class TestAdventOfCode(unittest.TestCase):
             today = getattr(module, "Today")
             solver = today(day=day, simple=False)
             solver.set_lines(simple=False)
-
             for part in ("part1", "part2"):
                 expected = self.expected_results.get(day, {}).get(part)
                 if expected is not None:
@@ -59,7 +58,6 @@ class TestAdventOfCode(unittest.TestCase):
                     print(f"Day {day}, {part}: No expected result stored.")
         except Exception as e:
             self.fail(f"Error testing day {day}: {e}")
-    
 
 if __name__ == "__main__":
     unittest.main()

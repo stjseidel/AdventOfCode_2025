@@ -93,9 +93,9 @@ class AOC:
         with open(file_path) as fp:
             lines = fp.readlines()
         self.lines = [line.replace("\n", "") for line in lines]
-        self.lines = [
-            re.sub(" +", " ", line) for line in self.lines
-        ]  # trim doubled spaces
+        # self.lines = [
+        #     re.sub(" +", " ", line) for line in self.lines
+        # ]  # trim doubled spaces
         return self.lines
 
     def chunk_lines(self, n):
@@ -304,7 +304,7 @@ class AOC:
                 if char not in ignore_chars:
                     positions.add((row, col))
         return positions
-    
+
     def get_neighbors(self, position, directions=None):
         directions = directions or self.directions
         neighbors = set()
@@ -312,10 +312,10 @@ class AOC:
             neighbor = (position[0] + direction[0], position[1] + direction[1])
             neighbors.add(neighbor)
         return neighbors
-    
+
     def get_neighbors_rose(self, position):
         return self.get_neighbors(position, directions=self.directions_rose)
-    
+
     def print_final(self):
         print(
             f"Part 1 result is: {self.result1}. (time: {round(self.time1 - self.beginning_of_time, 2)})"
