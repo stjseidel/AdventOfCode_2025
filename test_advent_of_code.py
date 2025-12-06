@@ -59,5 +59,6 @@ class TestAdventOfCode(unittest.TestCase):
         except Exception as e:
             self.fail(f"Error testing day {day}: {e}")
 
+
 if __name__ == "__main__":
     unittest.main()
