@@ -15,10 +15,10 @@ class Today(AOC):
 
     def parse_lines(self):
         lines = self.lines
-        split = lines.index('')
+        split = lines.index("")
 
         self.ranges = lines[:split]
-        self.items = {int(char) for char in lines[split + 1:]}
+        self.items = {int(char) for char in lines[split + 1 :]}
         return lines
 
     def part1(self):
@@ -26,7 +26,7 @@ class Today(AOC):
         fresh = set()
         ranges = []
         for range_line in self.ranges:
-            limits = [int(char) for char in range_line.split('-')]
+            limits = [int(char) for char in range_line.split("-")]
             ranges.append(range(limits[0], limits[1] + 1))
 
         for item in self.items:
@@ -42,7 +42,7 @@ class Today(AOC):
         _ = self.parse_lines()
         ranges = []
         for range_line in self.ranges:
-            limits = [int(char) for char in range_line.split('-')]
+            limits = [int(char) for char in range_line.split("-")]
             ranges.append([limits[0], limits[1] + 1])
         ranges_sorted = sorted(ranges, key=lambda r: r[0])
         ranges_merged = []
@@ -70,27 +70,26 @@ if __name__ == "__main__":
     today.part1()
     print(f"Part 1 <SIMPLE> result is: {today.result1}")
 
-# =============================================================================
-# hard part 1
+    # =============================================================================
+    # hard part 1
     today.set_lines(simple=False)
     today.part1()
-    print(f'Part 1 <HARD> result is: {today.result1}')
+    print(f"Part 1 <HARD> result is: {today.result1}")
     today.stop()
-# =============================================================================
+    # =============================================================================
 
-
-# =============================================================================
-# simple part 2
+    # =============================================================================
+    # simple part 2
     today.set_lines(simple=True)
     today.part2()
-    print(f'Part 2 <SIMPLE> result is: {today.result2}')
-# =============================================================================
+    print(f"Part 2 <SIMPLE> result is: {today.result2}")
+    # =============================================================================
 
-# =============================================================================
-# hard part 2
+    # =============================================================================
+    # hard part 2
     today.set_lines(simple=False)
     today.part2()
-    print(f'Part 2 <HARD> result is: {today.result2}')
+    print(f"Part 2 <HARD> result is: {today.result2}")
     today.stop()
     today.print_final()
 # =============================================================================

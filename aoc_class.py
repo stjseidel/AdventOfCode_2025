@@ -55,7 +55,16 @@ class AOC:
         self.this_list = []
 
         self.directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # right, down, left, up
-        self.directions_rose = [(0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1)]
+        self.directions_rose = [
+            (0, 1),
+            (1, 1),
+            (1, 0),
+            (1, -1),
+            (0, -1),
+            (-1, -1),
+            (-1, 0),
+            (-1, 1),
+        ]
 
     def start(self):
         self.beginning = timer()
@@ -304,7 +313,7 @@ class AOC:
                 if char not in ignore_chars:
                     positions.add((row, col))
         return positions
-    
+
     def get_neighbors(self, position, directions=None):
         directions = directions or self.directions
         neighbors = set()
@@ -312,10 +321,10 @@ class AOC:
             neighbor = (position[0] + direction[0], position[1] + direction[1])
             neighbors.add(neighbor)
         return neighbors
-    
+
     def get_neighbors_rose(self, position):
         return self.get_neighbors(position, directions=self.directions_rose)
-    
+
     def print_final(self):
         print(
             f"Part 1 result is: {self.result1}. (time: {round(self.time1 - self.beginning_of_time, 2)})"

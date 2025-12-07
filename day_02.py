@@ -58,7 +58,7 @@ class Today(AOC):
                     break
             if found:
                 continue
-            
+
 
 if __name__ == "__main__":
     # prep

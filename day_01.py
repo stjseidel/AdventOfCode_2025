@@ -58,7 +58,7 @@ class Today(AOC):
         self.result2 = password
         self.time2 = timer()
         return self.result2
-    
+
 
 if __name__ == "__main__":
     # prep
