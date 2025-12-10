@@ -6,8 +6,9 @@ Created on Mon Dec  4 06:32:12 2023
 @author: stjse
 """
 
-from timeit import default_timer as timer
 from itertools import combinations
+from timeit import default_timer as timer
+
 from aoc_class import AOC
 
 
@@ -20,7 +21,6 @@ class Today(AOC):
     def parse_lines(self):
         lines = self.lines
         lines = [tuple(int(x) for x in line.split(',')) for line in lines]
-
         return lines
 
     def part1(self):

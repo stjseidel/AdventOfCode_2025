@@ -6,11 +6,12 @@ Created on Mon Dec  4 06:32:12 2023
 @author: stjse
 """
 
-from aoc_class import AOC
-from typing import ClassVar
 from collections import defaultdict, deque
 from dataclasses import dataclass
 from timeit import default_timer as timer
+from typing import ClassVar
+
+from aoc_class import AOC
 
 queue_beams = deque()
 queue_splits = deque()

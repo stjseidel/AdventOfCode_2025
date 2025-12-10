@@ -325,24 +325,9 @@ class AOC:
     def get_neighbors_rose(self, position):
         return self.get_neighbors(position, directions=self.directions_rose)
 
-    def print_final(self):
-        print(
-            f"Part 1 result is: {self.result1}. (time: {round(self.time1 - self.beginning_of_time, 2)})"
-        )
-        print(
-            f"Part 2 result is: {self.result2} (time: {round(self.time2 - self.time1, 2)})"
-        )
-
-    def get_neighbors(self, position, directions=None):
-        directions = directions or self.directions
-        neighbors = set()
-        for direction in directions:
-            neighbor = (position[0] + direction[0], position[1] + direction[1])
-            neighbors.add(neighbor)
-        return neighbors
-
-    def get_neighbors_rose(self, position):
-        return self.get_neighbors(position, directions=self.directions_rose)
+    def get_distance_between_tuples(self, a, b):
+        """Calc distance between two pairs of tuples of xy or xyz."""
+        return sum([(a[i] - b[i])**2 for i in range(len(a))])**0.5
 
     def print_final(self):
         print(
